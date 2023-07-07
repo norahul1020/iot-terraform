@@ -1,98 +1,97 @@
 
-
 resource "google_project_service" "firestore" {
-  project = "static-site-378516"
+  project = var.project_id
   service = "firestore.googleapis.com"
 
 }
 
 resource "google_firestore_database" "database" {
-  project                     = "static-site-378516"
-  name                        = "default-3"
-  location_id                 = "asia-south1"
-  type                        = "FIRESTORE_NATIVE"
-  concurrency_mode            = "OPTIMISTIC"
-  app_engine_integration_mode = "DISABLED"
+  project                     = var.project_id
+  name                        = var.firestoredb_name #"default-2"
+  location_id                 = var.firestoredb_location_id #"asia-south1"
+  type                        = var.firestoredb_type #"FIRESTORE_NATIVE"
+  concurrency_mode            = var.firestoredb_concurrency_mode #"OPTIMISTIC"
+  app_engine_integration_mode = var.firestoredb_app_engine_integration_mode #"DISABLED"
 
   depends_on = [google_project_service.firestore]
 }
 
 ################ alertData #############
 resource "google_firestore_document" "doc-1" {
-  project     = "static-site-378516"
-  collection  = "alertData"
-  document_id = "pressure_3"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_1
+  document_id = var.collection_1_document_1
+  fields      = var.field
 }
 resource "google_firestore_document" "doc-2" {
-  project     = "static-site-378516"
-  collection  = "alertData"
-  document_id = "waterQulity"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_1
+  document_id = var.collection_1_document_2
+  fields      = var.field
 }
 
 ################ mail ############
 resource "google_firestore_document" "doc-3" {
-  project     = "static-site-378516"
-  collection  = "mail"
-  document_id = "email"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_2
+  document_id = var.collection_2_document_1
+  fields      = var.field
 }
 resource "google_firestore_document" "doc-4" {
-  project     = "static-site-378516"
-  collection  = "mail"
-  document_id = "emailToSuperAdmin"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_2
+  document_id = var.collection_2_document_2
+  fields      = var.field
 }
 resource "google_firestore_document" "doc-5" {
-  project     = "static-site-378516"
-  collection  = "mail"
-  document_id = "emailToUser"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_2
+  document_id = var.collection_2_document_3
+  fields      = var.field
 }
 
 ################ templateCollection ##############
 resource "google_firestore_document" "doc-6" {
-  project     = "static-site-378516"
-  collection  = "templateCollection"
-  document_id = "ActivatedTemplate"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_3
+  document_id = var.collection_3_document_1
+  fields      = var.field
 }
 resource "google_firestore_document" "doc-7" {
-  project     = "static-site-378516"
-  collection  = "templateCollection"
-  document_id = "ApproveTemplate"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_3
+  document_id = var.collection_3_document_2
+  fields      = var.field
 }
 resource "google_firestore_document" "doc-8" {
-  project     = "static-site-378516"
-  collection  = "templateCollection"
-  document_id = "DeactivatedTemplate"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_3
+  document_id = var.collection_3_document_3
+  fields      = var.field
 }
 resource "google_firestore_document" "doc-9" {
-  project     = "static-site-378516"
-  collection  = "templateCollection"
-  document_id = "DenyTemplate"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_3
+  document_id = var.collection_3_document_4
+  fields      = var.field
 }
 resource "google_firestore_document" "doc-10" {
-  project     = "static-site-378516"
-  collection  = "templateCollection"
-  document_id = "handlebarsTemplate"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_3
+  document_id = var.collection_3_document_5
+  fields      = var.field
 }
 resource "google_firestore_document" "doc-11" {
-  project     = "static-site-378516"
-  collection  = "templateCollection"
-  document_id = "superAdminTemp"
-  fields      = "{\"something\":{\"mapValue\":{\"fields\":{\"0\":{\"stringValue\":\"pressure\"}}}}}"
+  project     = var.project_id
+  collection  = var.collection_3
+  document_id = var.collection_3_document_6
+  fields      = var.field
 }
 
 ################### userData ###############
 resource "google_firestore_document" "doc-12" {
-  project     = "static-site-378516"
-  collection  = "userData"
-  document_id = ""
-  fields      = ""
+  project     = var.project_id
+  collection  = var.collection_4
+  document_id = var.collection_4_document_1
+  fields      = var.field
 }
